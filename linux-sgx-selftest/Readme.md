@@ -1,0 +1,3 @@
+# Linux selftest enclave
+
+This is a test enclave for the Linux kernel, taken [from here](https://github.com/torvalds/linux/tree/v6.0/tools/testing/selftests/sgx). Because this selftest enclave has several security vulnerabilities, it should not be reused by other projects, [see a discussion here](https://lore.kernel.org/linux-sgx/20230719142500.13623-1-jo.vanbulck@cs.kuleuven.be/). Nonetheless, some projects have re-used its code in their projects and inadvertently took over these vulnerabilities.
