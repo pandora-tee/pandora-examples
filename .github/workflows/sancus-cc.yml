@@ -1,0 +1,34 @@
+name: Sancus compilation
+
+on:
+  # Run on pushes to master
+  push:
+    branches:
+      - main
+  # run on manual trigger
+  workflow_dispatch:
+  # Run on pull requests (automatically uses PR in docker name)
+  pull_request:
+  # Also run on a schedule (once a month)
+  schedule:
+    - cron: '0 0 1 */1 *'
+
+jobs:
+  test-examples:
+    name: sancus-cc ${{ matrix.target }} unit tests
+    runs-on: ubuntu-latest
+    container:
+      image: docker.pkg.github.com/sancus-tee/sancus-main/sancus-devel-128:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [cfsan, full_encl, ptrsan, t2w]
+
+    steps:
+      - uses: actions/checkout@v2
+        name: Pull repository
+      - run: cd sancus/${{ matrix.target }} ; make clean all
+        name: Build ${{ matrix.target }}
