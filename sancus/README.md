@@ -1,4 +1,6 @@
 # Sample enclave programs for the MSP430-Sancus TEE
+[![Build Status](https://github.com/pandora-tee/pandora-examples/actions/workflows/sancus-cc.yml/badge.svg)](https://github.com/pandora-tee/pandora-examples/actions/workflows/sancus-cc.yml)
+[![Validation Status](https://github.com/pandora-tee/pandora-examples/actions/workflows/sancus-ci.yml/badge.svg)](https://github.com/pandora-tee/pandora-examples/actions/workflows/sancus-ci.yml)
 
 Sancus is a lightweight enclave architecture for embedded 16-bit devices, see:
 
