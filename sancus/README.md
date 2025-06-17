@@ -1,6 +1,9 @@
 # Sample Enclave Programs for the MSP430-Sancus TEE
 [![Build Status](https://github.com/pandora-tee/pandora-examples/actions/workflows/sancus-cc.yml/badge.svg)](https://github.com/pandora-tee/pandora-examples/actions/workflows/sancus-cc.yml)
 [![Validation Status](https://github.com/pandora-tee/pandora-examples/actions/workflows/sancus-ci.yml/badge.svg)](https://github.com/pandora-tee/pandora-examples/actions/workflows/sancus-ci.yml)
+[![Badge Available](https://systex-workshop.github.io/2025/img/systexbadges-available.svg)](https://systex-workshop.github.io/2025/artifact.html)
+[![Badge Functional](https://systex-workshop.github.io/2025/img/systexbadges-functional.svg)](https://systex-workshop.github.io/2025/artifact.html)
+[![Badge Reusable](https://systex-workshop.github.io/2025/img/systexbadges-reusable.svg)](https://systex-workshop.github.io/2025/artifact.html) 
 
 This directory contains the unit tests and evaluation case studies for the Pandora port to the [Sancus](https://downloads.distrinet-research.be/software/sancus/) research TEE for embedded 16-bit MSP430 microcontrollers. The hardware-abstraction layer and `SancusSDK` enclave loader have been integrated into the [upstream Pandora repository](https://github.com/pandora-tee/pandora).
 
@@ -25,6 +28,15 @@ More details can be found in Gert-Jan Goossens's [Msc thesis](https://downloads.
 - **t2w:** Reproduction of known vulnerabilities in Sancus applications and support libraries, discovered in the prior [Tale of 2 Worlds paper](https://vanbulck.net/files/ccs19-tale.pdf) (cf. paper §4.3)
 
 ## Reproduction
+
+### Dependencies
+
+Detailed instructions for installing Pandora and all its dependencies in a Python virtual environment are provided below. This guide assumes you have a machine with the following specifications:
+
+* Python v3.12 or higher
+* x86-64 architecture: The [`msp430-objdump` binary](https://github.com/pandora-tee/pandora/blob/main/bin/msp430-objdump) binary shipped with Pandora is currently only included for Intel/AMD x86. Replacing this binary with a compatible ARM binary was not tested, but should in principle be sufficient to support running Pandora-MSP430 on ARM hosts.
+
+**Note (Pandora/angr versions).** The evaluation in the SysTEX'25 paper was tested to work with [pandora (commit 34ded2e)](https://github.com/pandora-tee/pandora/commit/34ded2e94d654116b0ce856fa82701d119352bab) and [angr-platforms (commit ee1b6d9)](https://github.com/angr/angr-platforms/commit/ee1b6d9d20f11b250580fa0d867d51957b8f4e53).
 
 ### Symbolic Validation
 
@@ -52,8 +64,6 @@ $ sudo python3 -m venv venv && source ./venv/bin/activate
 ```
 
 After Pandora successfully finished, you should see a summary in the console and human-readable HTML reports in the current directory.
-
-**Note (dependencies).** The evaluation in the SysTEX'25 paper was tested to work with [pandora (commit 34ded2e)](https://github.com/pandora-tee/pandora/commit/34ded2e94d654116b0ce856fa82701d119352bab) and [angr-platforms (commit ee1b6d9)](https://github.com/angr/angr-platforms/commit/ee1b6d9d20f11b250580fa0d867d51957b8f4e53).
 
 ### Compiling and Running
 
